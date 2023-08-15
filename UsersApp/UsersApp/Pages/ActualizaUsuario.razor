@@ -1,0 +1,13 @@
+﻿@page "/user/update/{IdUser}"
+
+<UsersApp.Components.Users.UpdateUser IdUser="@IdUser"></UsersApp.Components.Users.UpdateUser>
+
+@code {
+    [Parameter]
+    public string IdUser { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        IdUser = IdUser;
+    }
+}

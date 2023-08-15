@@ -1,0 +1,54 @@
+﻿@using Entities
+@using Business
+@inject NavigationManager navmanager
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Codigo</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Fecha Nacimiento</th>
+            <th scope="col">Sexo</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var i in ListaUsuarios)
+        {
+            <tr>
+                <th scope="row">@i.UserId</th>
+                <td>@i.UserName</td>
+                <td>@i.Birthdate.ToShortDateString()</td>
+                <td>@i.Sex</td>
+                <td><a href="user/update/@i.UserId">Editar</a> </td>
+                <td><input type="button" @onclick="Remove" value="Eliminar" /> </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+
+    string IdUser;
+
+    User user = new User();
+
+
+    public List<User> ListaUsuarios = new List<User>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        ListaUsuarios = B_User.ShowUser();
+    }
+
+    
+    private void Remove()
+    {
+        user = B_User.DeleteById(IdUser);
+        B_User.DeleteUser(user);
+        navmanager.NavigateTo("Usuarioconsulta");
+    }
+    
+
+}
