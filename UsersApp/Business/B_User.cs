@@ -1,5 +1,6 @@
 ﻿using DataAccess;
 using Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace Business
 {
     public class B_User
     {
+
         public static List<User> ShowUser()
         {
             using (var db = new UserContext())
@@ -39,6 +41,7 @@ namespace Business
         {
             using(var db = new UserContext())
             {
+                
                 db.users.Update(user_m);
                 db.SaveChanges();
             }

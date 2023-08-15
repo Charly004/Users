@@ -1,6 +1,7 @@
 ﻿@using Entities
 @using Business
 @inject NavigationManager navmanager
+@inject IJSRuntime JSRuntime
 
 <table class="table">
     <thead>
@@ -22,7 +23,7 @@
                 <td>@i.Birthdate.ToShortDateString()</td>
                 <td>@i.Sex</td>
                 <td><a href="user/update/@i.UserId">Editar</a> </td>
-                <td><input type="button" @onclick="Remove" value="Eliminar" /> </td>
+                <td><input type="button" @onclick="@(()=>Remove(i))" value="Eliminar" /> </td>
             </tr>
         }
     </tbody>
@@ -30,10 +31,7 @@
 
 @code {
 
-    string IdUser;
-
     User user = new User();
-
 
     public List<User> ListaUsuarios = new List<User>();
 
@@ -41,13 +39,11 @@
     {
         ListaUsuarios = B_User.ShowUser();
     }
-
     
-    private void Remove()
+    private void Remove(User user)
     {
-        user = B_User.DeleteById(IdUser);
         B_User.DeleteUser(user);
-        navmanager.NavigateTo("Usuarioconsulta");
+        navmanager.NavigateTo("Usuario");
     }
     
 
