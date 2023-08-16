@@ -3,6 +3,9 @@
 @inject NavigationManager navmanager
 @inject IJSRuntime JSRuntime
 
+<h3>Lista de Usuarios</h3>
+<hr />
+
 <table class="table">
     <thead>
         <tr>
@@ -23,6 +26,7 @@
                 <td>@i.Birthdate.ToShortDateString()</td>
                 <td>@i.Sex</td>
                 <td><a href="user/update/@i.UserId">Editar</a> </td>
+                <br>
                 <td><input type="button" @onclick="@(()=>Remove(i))" value="Eliminar" /> </td>
             </tr>
         }

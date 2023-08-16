@@ -3,19 +3,21 @@
 
 @inject NavigationManager navmanager
 
+<h3>Crear Usuario</h3>
+<hr />
 <div>
     <EditForm Model="@user">
         <div class="form-group">
-            <label>Nombre Usuario</label>
-            <InputText class="form-control" @bind-Value="user.UserName"></InputText>
+            <label>Nombre Usuario</label><br />
+            <InputText class="form-control" @bind-Value="user.UserName"></InputText><br />
         </div>
         <div class="form-group">
-            <label>Fecha Nacimiento</label>
-            <InputDate class="form-control" @bind-Value="user.Birthdate"></InputDate>
+            <label>Fecha Nacimiento</label><br />
+            <InputDate class="form-control" @bind-Value="user.Birthdate"></InputDate><br />
 
         </div>
         <div class="form-group">
-            <label>Sexo</label>
+            <label>Sexo</label><br />
             @*<InputText class="form-control" @bind-Value="user.Sex"></InputText*@
 
             <InputSelect class="form-select" arial-label="Default select example" @bind-Value="user.Sex">
@@ -24,7 +26,7 @@
                     <option>@i</option>
                 }
             </InputSelect>
-
+            <br />
         </div>
         <input type="button" @onclick="Save" value="Guardar" />
     </EditForm>
