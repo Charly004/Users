@@ -1,2 +1,2 @@
 # Users
-CRUD hacia SQL hecho en blazor mediante entity framework, Arquitectura por capas
+Sitio Web hecho en blazor haciendo CRUD hacia SQL mediante Entity Framework, Arquitectura por capas
